@@ -5,15 +5,16 @@ import './Login.css'
 
 const Login = () => {
 
-    // Use the useContext hook & destructuring createUser
+    // Use the useContext hook & destructuring signIn
     const { signIn } = useContext(AuthContext);
 
-    // Declare Submit handle & set form data
+    // Declare Submit handle & get form data
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
+        console.log(email, password)
 
         // Call function to use form data
         signIn(email, password)

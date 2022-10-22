@@ -17,7 +17,7 @@ const SignUp = () => {
         const password = form.password.value;
         const confirm = form.confirm.value;
 
-        // Check password
+        // Validate password
         if (password.length < 6) {
             setError('Password should be 6 characters or more');
             return;
@@ -38,7 +38,7 @@ const SignUp = () => {
         .catch(error => console.error(error));
 
     }
-    
+
     return (
         <div className='form-container'>
             <h2 className='form-title'>Sign Up</h2>

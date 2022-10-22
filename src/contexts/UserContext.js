@@ -1,5 +1,5 @@
-import React, { createContext, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import React, { createContext, useEffect, useState } from 'react';
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import app from '../firebase/firebase.config';
 
 // Create AuthContext & Export
@@ -24,6 +24,19 @@ const UserContext = ({ children }) => {
     const logOut = () => {
         return signOut(auth);
     }
+
+    // Declare useEffect to control the observer side effect
+    useEffect( () =>{
+        // Create Observer to observe user
+        const unSubscribe = onAuthStateChanged(auth, currentUser =>{
+            console.log('current User inside state change', currentUser);
+            // Set user at the state
+            setUser(currentUser);
+        });
+        // Call unSubscribe to detach the observer
+        return () => unSubscribe();
+
+    }, [])
 
     // Pass data to value
     const authInfo = { user, createUser, signIn, logOut }
