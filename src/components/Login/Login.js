@@ -5,7 +5,25 @@ import './Login.css'
 
 const Login = () => {
 
-   
+    // Use the useContext hook & destructuring createUser
+    const { signIn } = useContext(AuthContext);
+
+    // Declare Submit handle & set form data
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        // Call function to use form data
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                form.reset();
+            })
+            .catch(error => console.error(error));
+    }
 
     return (
         <div className='form-container'>

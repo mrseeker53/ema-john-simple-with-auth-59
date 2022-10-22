@@ -38,6 +38,7 @@ const SignUp = () => {
         .catch(error => console.error(error));
 
     }
+    
     return (
         <div className='form-container'>
             <h2 className='form-title'>Sign Up</h2>
