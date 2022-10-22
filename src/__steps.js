@@ -17,4 +17,7 @@ Auth Integration:
 5. Set value into the provider
 6. Create a variable to pass data at value
 7. Set <App/> into the UserContext in the "index.js" file
+8. Export AuthContext to be used inside useContext hook
+9. Get Form data
+10. Create auth using getAuth in the UserContext
 */
